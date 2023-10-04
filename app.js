@@ -123,7 +123,7 @@ class Carrito {
     for (const producto of this.carrito) {
       divCarrito.innerHTML += `
         <div class="productoCarrito">
-          <h2>${producto.nombre}</h2>
+          <h4>${producto.nombre}</h4>
           <p>$${producto.precio}</p>
           <p>Cantidad: ${producto.cantidad}</p>
           <a href="#" class="btnQuitar" data-id="${producto.id}">Quitar del carrito</a>
