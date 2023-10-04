@@ -25,10 +25,10 @@ class BaseDeDatos {
     // Array para el catálogo
     this.productos = [];
     // Empezar a cargar productos
-    this.agregarRegistro(1, "Code 502", 400, "Remeras", "a.jpg");
-    this.agregarRegistro(2, "Code 505", 300, "Remeras", "b.jpg");
-    this.agregarRegistro(3, "Code 103", 400, "Remeras", "c.jpg");
-    this.agregarRegistro(4, "Code 401", 200, "Remeras", "d.jpg");
+    this.agregarRegistro(1, "Code 502", 400, "Claro", "a.jpg");
+    this.agregarRegistro(2, "Code 505", 300, "Oscuro", "b.jpg");
+    this.agregarRegistro(3, "Code 103", 400, "Oscuro", "c.jpg");
+    this.agregarRegistro(4, "Code 401", 200, "Oscuro", "d.jpg");
   }
 
   // Método que crea el objeto producto y lo almacena en el catálogo (array)
@@ -51,7 +51,7 @@ class BaseDeDatos {
   // nombre del producto con la palabra que el pasemos como parámetro
   registrosPorNombre(palabra) {
     return this.productos.filter((producto) =>
-      producto.nombre.toLowerCase().includes(palabra.toLowerCase())
+      producto.categoria.toLowerCase().includes(palabra.toLowerCase())
     );
   }
 }
