@@ -62,6 +62,8 @@ main input {
   padding-left: 3%;
   
 }
+
+@media (max-width: 767px) {
 section {
   
   position: fixed;
@@ -73,8 +75,25 @@ section {
   padding: 30px;
   transition: all 0.2s;
   background-color: white;
+}
+}
+
+@media (min-width: 992px) {
+  section{
+  position: fixed;
+  box-shadow: -6px -2px 25px -13px rgba(0, 0, 0, 0.15);
+  width: 380px;
+  height: 100%;
+  top: 0;
+  right: 0;
+  padding: 30px;
+  transition: all 0.2s;
+  background-color: white;
   
 }
+}
+
+
 section h1 {
   position: fixed;
   top: 35px;
@@ -146,7 +165,7 @@ section h4{
   
 }
 .ocultar {
-  right: -340px;
+  right: -380px;
   transition: all 0.2s;
   
 }
