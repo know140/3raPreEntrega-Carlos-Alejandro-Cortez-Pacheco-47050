@@ -10,7 +10,6 @@ class Producto {
   }
 }
 
-
 // Base de datos
 class BaseDeDatos {
   constructor() {
@@ -44,7 +43,7 @@ class BaseDeDatos {
   }
 }
 
-//Productos de nuestro carrito
+//carrito de compras
 class Carrito {
   constructor() {
     const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
@@ -84,13 +83,13 @@ class Carrito {
      this.listar();
   }
 
-  // Renderiza todos los productos en el HTML
+  // Insertamos HTML
   listar() {
-    // Reiniciamos variables
+    
     this.total = 0;
     this.cantidadProductos = 0;
     divCarrito.innerHTML = "";
-    // Recorro producto por producto del carrito, y los dibujo en el HTML
+
     for (const producto of this.carrito) {
       divCarrito.innerHTML += `
         <div class="productoCarrito">
@@ -100,25 +99,20 @@ class Carrito {
           <a href="#" class="btnQuitar" data-id="${producto.id}">Quitar del carrito</a>
         </div>
       `;
-      // Actualizamos los totales
+      
       this.total += producto.precio * producto.cantidad;
       this.cantidadProductos += producto.cantidad;
     }
-    // Como no se cuantos productos tengo en el carrito, debo
-    // asignarle los eventos de forma dinámica a cada uno
-    // Primero hago una lista de todos los botones con .querySelectorAll
+   
     const botonesQuitar = document.querySelectorAll(".btnQuitar");
-    // Después los recorro uno por uno y les asigno el evento a cada uno
     for (const boton of botonesQuitar) {
       boton.addEventListener("click", (event) => {
-        event.preventDefault();
-        // Obtengo el id por el dataset (está asignado en this.listar())
+        event.preventDefault(); 
         const idProducto = Number(boton.dataset.id);
-        // Llamo al método quitar pasándole el ID del producto
         this.quitar(idProducto);
       });
     }
-    // Actualizo los contadores del HTML
+   
     spanCantidadProductos.innerText = this.cantidadProductos;
     spanTotalCarrito.innerText = this.total;
   }
@@ -138,14 +132,12 @@ const botonCarrito = document.querySelector("section h1");
 // Instaciamos la clase Carrito
 const carrito = new Carrito();
 
-// Mostramos el catálogo de la base de datos apenas carga la página
+
 cargarProductos(bd.traerRegistros());
 
-// Función para mostrar para renderizar productos del catálogo o buscador
 function cargarProductos(productos) {
-  // Vacíamos el div
   divProductos.innerHTML = "";
-  // Recorremos producto por producto y lo dibujamos en el HTML
+  
   for (const producto of productos) {
     divProductos.innerHTML += `
       <div class="producto">
@@ -157,26 +149,18 @@ function cargarProductos(productos) {
         <a href="#" class="btnAgregar" data-id="${producto.id}">Agregar al carrito</a>
       </div>
     `;
-  }
+}
+        
 
-
-  
-
-  // Lista dinámica con todos los botones que haya en nuestro catálogo
+  // botones del catálogo y evento click
   const botonesAgregar = document.querySelectorAll(".btnAgregar");
 
-  // Recorremos botón por botón de cada producto en el catálogo y le agregamos
-  // el evento click a cada uno
   for (const boton of botonesAgregar) {
     boton.addEventListener("click", (event) => {
-      // Evita el comportamiento default de HTML
-      event.preventDefault();
-      // Guardo el dataset ID que está en el HTML del botón Agregar al carrito
-      const idProducto = Number(boton.dataset.id);
-      // Uso el método de la base de datos para ubicar el producto según el ID
-      const producto = bd.registroPorId(idProducto);
-      // Llama al método agregar del carrito
-      carrito.agregar(producto);
+       event.preventDefault();
+       const idProducto = Number(boton.dataset.id);
+       const producto = bd.registroPorId(idProducto);
+       carrito.agregar(producto);
     });
   }
 }
@@ -193,3 +177,4 @@ inputBuscar.addEventListener("input", (event) => {
 botonCarrito.addEventListener("click", (event) => {
   document.querySelector("section").classList.toggle("ocultar");
 });
+
