@@ -227,16 +227,21 @@ section h4{
 }
 
 .filtro{
-  font-size: 15px;
-  
+
+  font-size: 13px;
+  border: none;
+  outline: none;
   text-align: center;
-  padding: 2px 10px;
-  border-radius: 12px;
+  padding: 2px 12px;
+  border-radius: 13px;
+  background-color: #474747;
+  color: aliceblue;
   
   
 }
 
-#filtroCategorias{
+#filtroCategorias {
+  
    text-align: center;
    border-radius: 15px;
     margin-bottom: 3%;
