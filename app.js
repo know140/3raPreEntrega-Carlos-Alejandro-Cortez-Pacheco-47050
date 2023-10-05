@@ -1,13 +1,5 @@
-/*
- Objetivos para la tercer pre-entrega:
- - Usar el DOM ✅
- - Usar eventos ✅
- - Usar storage ✅
- - MODO PRO: Simular una base de datos o API ✅
- - MODO DIOS: Buscador ✅
-*/
 
-// Clase "molde" para los productos de nuestra aplicación
+// detalles de producto
 class Producto {
   constructor(id, nombre, precio, categoria, imagen) {
     this.id = id;
@@ -18,40 +10,33 @@ class Producto {
   }
 }
 
-// Clase para que simula la base de datos del e-commerce, acá van a estar
-// todos los productos de nuestro catálogo
+
+// Base de datos
 class BaseDeDatos {
   constructor() {
-    // Array para el catálogo
     this.productos = [];
-    // Empezar a cargar productos
     this.agregarRegistro(1, "Code 502", 400, "Claro", "a.jpg");
     this.agregarRegistro(2, "Code 505", 600, "Color", "b.jpg");
     this.agregarRegistro(3, "Code 103", 400, "Oscuro", "c.jpg");
     this.agregarRegistro(4, "Code 401", 400, "Oscuro", "d.jpg");
-    this.agregarRegistro(4, "Code 102", 600, "Color", "j.jpg");
-    this.agregarRegistro(4, "Code 302", 600, "Color", "i.jpg");
-
+    this.agregarRegistro(5, "Code 102", 600, "Color", "j.jpg");
+    this.agregarRegistro(6, "Code 302", 600, "Color", "i.jpg");
   }
 
-  // Método que crea el objeto producto y lo almacena en el catálogo (array)
   agregarRegistro(id, nombre, precio, categoria, imagen) {
     const producto = new Producto(id, nombre, precio, categoria, imagen);
     this.productos.push(producto);
   }
-
-  // Nos devuelve todo el catálogo de productos
+  
   traerRegistros() {
     return this.productos;
   }
-
-  // Nos devuelve un producto según el ID
+ 
   registroPorId(id) {
     return this.productos.find((producto) => producto.id === id);
   }
-
-  // Nos devuelve un array con todas las coincidencias que encuentre según el
-  // nombre del producto con la palabra que el pasemos como parámetro
+  
+  // filtro para buscar
   registrosPorNombre(palabra) {
     return this.productos.filter((producto) =>
       producto.categoria.toLowerCase().includes(palabra.toLowerCase())
@@ -59,61 +44,44 @@ class BaseDeDatos {
   }
 }
 
-// Clase carrito que nos sirve para manipular los productos de nuestro carrito
+//Productos de nuestro carrito
 class Carrito {
   constructor() {
-    // Storage
     const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
-    // Array donde van a estar almacenados todos los productos del carrito
     this.carrito = carritoStorage || [];
-    this.total = 0; // Suma total de los precios de todos los productos
-    this.cantidadProductos = 0; // La cantidad de productos que tenemos en el carrito
-    // Llamo a listar apenas de instancia el carrito para aplicar lo que
-    // hay en el storage (en caso de que haya algo)
+    this.total = 0; 
+    this.cantidadProductos = 0; 
     this.listar();
   }
 
-  // Método para saber si el producto ya se encuentra en el carrito
   estaEnCarrito({ id }) {
     return this.carrito.find((producto) => producto.id === id);
   }
 
-  // Agregar al carrito
   agregar(producto) {
     const productoEnCarrito = this.estaEnCarrito(producto);
-    // Si no está en el carrito, le mando eun push y le agrego
-    // la propiedad "cantidad"
     if (!productoEnCarrito) {
-      
       this.carrito.push({ ...producto, cantidad: 1 });
-      document.querySelector("section").classList.remove("ocultar");
-      
-    } else {
-      // De lo contrario, si ya está en el carrito, le sumo en 1 la cantidad
+      document.querySelector("section").classList.remove("ocultar");  
+   } else {
       productoEnCarrito.cantidad++;
     }
-    // Actualizo el storage
+
     localStorage.setItem("carrito", JSON.stringify(this.carrito));
-    // Muestro los productos en el HTML
     this.listar();
   }
 
-  // Quitar del carrito
+ 
   quitar(id) {
-    // Obento el índice de un producto según el ID, porque el
-    // método splice requiere el índice
     const indice = this.carrito.findIndex((producto) => producto.id === id);
-    // Si la cantidad es mayor a 1, le resto la cantidad en 1
-    if (this.carrito[indice].cantidad > 1) {
+  if (this.carrito[indice].cantidad > 1) {
       this.carrito[indice].cantidad--;
     } else {
-      // Y sino, borramos del carrito el producto a quitar
       this.carrito.splice(indice, 1);
     }
-    // Actualizo el storage
+  
     localStorage.setItem("carrito", JSON.stringify(this.carrito));
-    // Muestro los productos en el HTML
-    this.listar();
+     this.listar();
   }
 
   // Renderiza todos los productos en el HTML
@@ -190,6 +158,9 @@ function cargarProductos(productos) {
       </div>
     `;
   }
+
+
+  
 
   // Lista dinámica con todos los botones que haya en nuestro catálogo
   const botonesAgregar = document.querySelectorAll(".btnAgregar");

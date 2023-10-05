@@ -107,7 +107,7 @@ section h1 {
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
   background: url("img/carritob.png") no-repeat #ed2424;
   background-size: 80%;
-  background-position: 4px center;
+  background-position: px center;
   
 }
 
@@ -177,6 +177,7 @@ section h4{
   flex-wrap: wrap;
   justify-content: center;
   
+  
  
 }
 
@@ -199,8 +200,7 @@ section h4{
   padding: 4px 10px;
   color: white;
   margin-top: 4px;
-  
-  
+   
 }
 .producto .imagen {
   display: flex;
