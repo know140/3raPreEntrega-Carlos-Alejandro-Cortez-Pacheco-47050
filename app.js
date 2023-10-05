@@ -38,7 +38,7 @@ class BaseDeDatos {
   // filtro para buscar
   registrosPorNombre(palabra) {
     return this.productos.filter((producto) =>
-      producto.categoria.toLowerCase().includes(palabra.toLowerCase())
+      producto.nombre.toLowerCase().includes(palabra.toLowerCase())
     );
   }
 }
@@ -178,3 +178,18 @@ botonCarrito.addEventListener("click", (event) => {
   document.querySelector("section").classList.toggle("ocultar");
 });
 
+//filtro de botones colores y todos
+const botonesFiltro = document.querySelectorAll('.filtro');
+
+botonesFiltro.forEach((boton) => {
+  boton.addEventListener('click', (event) => {
+    const categoriaFiltro = event.target.getAttribute('data-categoria');
+    const productosFiltrados = bd.productos.filter((producto) => producto.categoria === categoriaFiltro);
+    cargarProductos(productosFiltrados);
+  });
+});
+
+const mostrarTodosBtn = document.getElementById('mostrarTodos');
+mostrarTodosBtn.addEventListener('click', () => {
+   cargarProductos(bd.productos);
+});

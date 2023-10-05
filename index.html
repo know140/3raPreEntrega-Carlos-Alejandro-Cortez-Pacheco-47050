@@ -15,13 +15,13 @@
    <div id="carouselExample" class="carousel slide">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="img/bannera.jpg" class="md-block w-100" alt="...">
+          <img src="img/bannera.jpg" class="md-block w-100" alt="banner de bateria">
         </div>
         <div class="carousel-item">
-          <img src="img/bannerb.jpg" class="d-block w-100" alt="...">
+          <img src="img/bannerb.jpg" class="d-block w-100" alt="banner de guitarra">
         </div>
         <div class="carousel-item">
-          <img src="img/bannerc.jpg" class="d-block w-100" alt="...">
+          <img src="img/bannerc.jpg" class="d-block w-100" alt="banner de publico">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -36,11 +36,22 @@
     
     <!-- Productos -->
     <main>
-      <input id="inputBuscar" type="text" placeholder="Claro, Oscuro o Color ..." />
+
+      <div id="filtroCategorias">
+        <button class="filtro" data-categoria="Claro">Claro</button>
+        <button class="filtro" data-categoria="Color">Color</button>
+        <button class="filtro" data-categoria="Oscuro">Oscuro</button>
+        <button class="filtro" id="mostrarTodos">Mostrar Todos</button>
+      </div>
+
+
+      <input id="inputBuscar" type="text" placeholder="Buscar por código ..." />
       <div id="productos">
         <!-- Acá van a ir todos los productos cargados en la base de datos (catálogo) -->
       </div>
+      
     </main>
+    
 
     <section class="ocultar">
       <h1>
@@ -53,7 +64,7 @@
       </div>
        <h4>Total: $<span id="totalCarrito">0</span></h4>
     </section>
-    
+   
 
   
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
