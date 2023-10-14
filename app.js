@@ -128,6 +128,7 @@ const divProductos = document.querySelector("#productos");
 const divCarrito = document.querySelector("#carrito");
 const inputBuscar = document.querySelector("#inputBuscar");
 const botonCarrito = document.querySelector("section h1");
+const botoncomprar = document.querySelector("#botoncomprar");
 
 // Instaciamos la clase Carrito
 const carrito = new Carrito();
@@ -192,4 +193,17 @@ botonesFiltro.forEach((boton) => {
 const mostrarTodosBtn = document.getElementById('mostrarTodos');
 mostrarTodosBtn.addEventListener('click', () => {
    cargarProductos(bd.productos);
+});
+
+botoncomprar.addEventListener("click", (event) =>{
+  event.preventDefault();
+  Swal.fire({
+    title: 'Gracias por su compra 🎸!',
+    text: 'CUBO Indumentaria',
+    icon: 'success',
+    customClass: {
+      confirmButton: 'boton-rojo'
+    },
+    buttonsStyling: false
+  });
 });
