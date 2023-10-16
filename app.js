@@ -172,6 +172,18 @@ function cargarProductos(productos) {
        const idProducto = Number(boton.dataset.id);
        const producto = bd.registroPorId(idProducto);
        carrito.agregar(producto);
+
+       Toastify({
+        text: "Se agrego "+ producto.nombre + " al carrito de compras",
+        gravity: "bottom",
+        position: "center",
+        className: "info",
+        style: {
+          
+          background: "#750202",
+        }
+      }).showToast();
+       
     });
   }
 }
@@ -207,15 +219,36 @@ mostrarTodosBtn.addEventListener('click', () => {
 
 botoncomprar.addEventListener("click", (event) =>{
   event.preventDefault();
-  carrito.vaciar();
+  
+  if (carrito.carrito.length === 0) {
+     Swal.fire('El carrito esta vacio 😔')
+     return;  
+    
+  }
+
   Swal.fire({
-    title: 'Gracias por su compra 🎸😁!',
-    text: 'CUBO Indumentaria',
-    icon: 'success',
-    customClass: {
-      confirmButton: 'boton-rojo'
-    },
-    buttonsStyling: false
-  });
+    title: '¿ Desea confirmar compra ?',
+    text: "",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#71DB30',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Comprar',
  
+
+  }).then((result) => {
+    
+    if (result.isConfirmed) {
+      
+      Swal.fire(
+        
+        'Gracias por su compra 🎸😊!',
+        'CUBO indumentaria',
+        'success'
+      ) 
+      
+      carrito.vaciar();
+      
+    }
+  })
 });
