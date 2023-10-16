@@ -51,6 +51,7 @@ class Carrito {
     this.total = 0; 
     this.cantidadProductos = 0; 
     this.listar();
+    this.vaciar();
   }
 
   estaEnCarrito({ id }) {
@@ -115,6 +116,15 @@ class Carrito {
    
     spanCantidadProductos.innerText = this.cantidadProductos;
     spanTotalCarrito.innerText = this.total;
+  }
+
+  vaciar(){
+    this.total = 0; 
+    this.cantidadProductos = 0; 
+    this.carrito = [];
+    localStorage.setItem("carrito", JSON.stringify(this.carrito));
+    this.listar();
+    
   }
 }
 
@@ -197,8 +207,9 @@ mostrarTodosBtn.addEventListener('click', () => {
 
 botoncomprar.addEventListener("click", (event) =>{
   event.preventDefault();
+  carrito.vaciar();
   Swal.fire({
-    title: 'Gracias por su compra 🎸!',
+    title: 'Gracias por su compra 🎸😁!',
     text: 'CUBO Indumentaria',
     icon: 'success',
     customClass: {
@@ -206,4 +217,5 @@ botoncomprar.addEventListener("click", (event) =>{
     },
     buttonsStyling: false
   });
+ 
 });

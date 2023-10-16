@@ -261,3 +261,18 @@ section h4{
   margin: 2px 0;
   transition: all 0.2s;
 }
+.boton{
+  color: white;
+  background-color: #ed2424;
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 40%;
+  border-radius: 10px;
+  border: none;
+  margin: 2px 0;
+  transition: all 0.2s;
+  text-align: center;
+}
