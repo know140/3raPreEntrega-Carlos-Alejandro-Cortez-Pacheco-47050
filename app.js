@@ -14,17 +14,15 @@ class Producto {
 class BaseDeDatos {
   constructor() {
     this.productos = [];
-    this.agregarRegistro(1, "Code 502", 400, "Claro", "a.jpg");
-    this.agregarRegistro(2, "Code 505", 600, "Color", "b.jpg");
-    this.agregarRegistro(3, "Code 103", 400, "Oscuro", "c.jpg");
-    this.agregarRegistro(4, "Code 401", 400, "Oscuro", "d.jpg");
-    this.agregarRegistro(5, "Code 102", 600, "Color", "j.jpg");
-    this.agregarRegistro(6, "Code 302", 600, "Color", "i.jpg");
+    this.cargarRegistros();
+   
   }
 
-  agregarRegistro(id, nombre, precio, categoria, imagen) {
-    const producto = new Producto(id, nombre, precio, categoria, imagen);
-    this.productos.push(producto);
+  async cargarRegistros(){
+    const resultado =  await fetch("json/productos.json");
+    this.productos = await resultado.json();
+    cargarProductos(this.productos)
+  
   }
   
   traerRegistros() {
@@ -104,6 +102,17 @@ class Carrito {
       this.total += producto.precio * producto.cantidad;
       this.cantidadProductos += producto.cantidad;
     }
+
+
+    if (this.cantidadProductos > 0){
+      botoncomprar.style.display = "block";
+    }else{
+      botoncomprar.style.display = "none";
+    
+    }
+   
+
+    
    
     const botonesQuitar = document.querySelectorAll(".btnQuitar");
     for (const boton of botonesQuitar) {

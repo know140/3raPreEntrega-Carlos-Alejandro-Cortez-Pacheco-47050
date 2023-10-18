@@ -1,0 +1,44 @@
+[
+    {
+        "id":1,
+        "nombre": "Code 502",
+        "precio": 400,
+        "categoria": "Claro",
+        "imagen": "a.jpg"
+    },
+    {
+        "id":2,
+        "nombre": "Code 505",
+        "precio": 600,
+        "categoria": "Color",
+        "imagen": "b.jpg"
+    },
+    {
+        "id":3,
+        "nombre": "Code 103",
+        "precio": 400,
+        "categoria": "Oscuro",
+        "imagen": "a.jpg"
+    },
+    {
+        "id":4,
+        "nombre": "Code 401",
+        "precio": 400,
+        "categoria": "Oscuro",
+        "imagen": "a.jpg"
+    },
+    {
+        "id":5,
+        "nombre": "Code 102",
+        "precio": 600,
+        "categoria": "Color",
+        "imagen": "a.jpg"
+    },
+    {
+        "id":6,
+        "nombre": "Code 302",
+        "precio": 600,
+        "categoria": "Color",
+        "imagen": "a.jpg"
+    }
+]
