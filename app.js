@@ -148,6 +148,30 @@ const divCarrito = document.querySelector("#carrito");
 const inputBuscar = document.querySelector("#inputBuscar");
 const botonCarrito = document.querySelector("section h1");
 const botoncomprar = document.querySelector("#botoncomprar");
+const botonesCategorias = document.querySelectorAll(".filtro");
+
+
+//filtro de botones colores y todos
+const botonesFiltro = document.querySelectorAll('.filtro');
+
+botonesFiltro.forEach((boton) => {
+  boton.addEventListener('click', (event) => {
+    const categoriaFiltro = event.target.getAttribute('data-categoria');
+    const productosFiltrados = bd.productos.filter((producto) => producto.categoria === categoriaFiltro);
+    cargarProductos(productosFiltrados);
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
 
 // Instaciamos la clase Carrito
 const carrito = new Carrito();
@@ -210,16 +234,12 @@ botonCarrito.addEventListener("click", (event) => {
   document.querySelector("section").classList.toggle("ocultar");
 });
 
-//filtro de botones colores y todos
-const botonesFiltro = document.querySelectorAll('.filtro');
 
-botonesFiltro.forEach((boton) => {
-  boton.addEventListener('click', (event) => {
-    const categoriaFiltro = event.target.getAttribute('data-categoria');
-    const productosFiltrados = bd.productos.filter((producto) => producto.categoria === categoriaFiltro);
-    cargarProductos(productosFiltrados);
-  });
-});
+
+
+
+
+//alert para carrito vacio y compra 
 
 const mostrarTodosBtn = document.getElementById('mostrarTodos');
 mostrarTodosBtn.addEventListener('click', () => {

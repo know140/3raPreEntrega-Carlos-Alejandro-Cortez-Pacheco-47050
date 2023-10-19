@@ -141,8 +141,8 @@ section h4{
   transition: all 0.2s;
   
 }
-.btnAgregar:hover,
-.btnQuitar:hover {
+.btnAgregar:hover
+ {
   border: 1px solid white;
   scale: 1.05;
   
@@ -290,17 +290,4 @@ section h4{
   transition: all 0.2s;
   text-align: center;
 }
-.boton .seleccionado{
-  border:4 solid white;
-  background-color: #ee4815;
-}
 
-
-.boton .seleccionado{
-  border:4 solid white;
-  background-color: #ee4815;
-}
-
-color{
-  color: #f04a18;
-}
