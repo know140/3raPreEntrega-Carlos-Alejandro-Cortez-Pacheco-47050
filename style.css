@@ -303,3 +303,7 @@ footer {
   padding: 10px;
   width: 100%;
 }
+.footer-link {
+  color: red;
+  /* Otros estilos que desees aplicar */
+}
