@@ -103,7 +103,7 @@ class Carrito {
       this.cantidadProductos += producto.cantidad;
     }
 
-
+// boton Comprar
     if (this.cantidadProductos > 0){
       botoncomprar.style.display = "block";
     }else{
