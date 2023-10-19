@@ -149,30 +149,33 @@ const inputBuscar = document.querySelector("#inputBuscar");
 const botonCarrito = document.querySelector("section h1");
 const botoncomprar = document.querySelector("#botoncomprar");
 const botonesCategorias = document.querySelectorAll(".filtro");
-
-
-//filtro de botones colores y todos
 const botonesFiltro = document.querySelectorAll('.filtro');
 
+
+
+let botonSeleccionado = null; // Mantén un seguimiento del botón seleccionado
+
+//filtro de botones colores y todos
 botonesFiltro.forEach((boton) => {
   boton.addEventListener('click', (event) => {
+    // Elimina la clase "seleccionado" de todos los botones
+    botonesFiltro.forEach((b) => b.classList.remove('seleccionado'));
+    
+    // Agrega la clase "seleccionado" al botón clicado
+    event.target.classList.add('seleccionado');
+
     const categoriaFiltro = event.target.getAttribute('data-categoria');
-    const productosFiltrados = bd.productos.filter((producto) => producto.categoria === categoriaFiltro);
+    const productosFiltrados = bd.productos.filter((producto) => {
+      if (categoriaFiltro === "Mostrar Todos") {
+        return true; // Muestra todos los productos si se selecciona "Mostrar Todos"
+      } else {
+        return producto.categoria === categoriaFiltro;
+      }
+    });
+
     cargarProductos(productosFiltrados);
   });
 });
-
-
-
-
-
-
-
-
-
-
-
-
 // Instaciamos la clase Carrito
 const carrito = new Carrito();
 

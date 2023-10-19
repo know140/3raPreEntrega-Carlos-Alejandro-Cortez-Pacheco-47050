@@ -246,7 +246,7 @@ section h4{
   text-align: center;
   padding: 2px 12px;
   border-radius: 13px;
-  background-color: #d30d0d;
+  
   color: aliceblue;
   
   
@@ -291,3 +291,7 @@ section h4{
   text-align: center;
 }
 
+.filtro.seleccionado {
+  background-color: #e73e3e; /* Color de fondo cuando está seleccionado */
+  color: #fff; /* Color de fuente cuando está seleccionado */
+}
