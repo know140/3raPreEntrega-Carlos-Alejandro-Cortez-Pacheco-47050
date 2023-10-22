@@ -307,3 +307,9 @@ footer {
   color: red;
   /* Otros estilos que desees aplicar */
 }
+
+.logocubo{
+  width: 120px; 
+  margin-top: 10px; 
+  margin-bottom: 10px;
+}
